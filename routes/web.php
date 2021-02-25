@@ -18,3 +18,6 @@ Route::get('/', function () {
 Route::get('/ola-mundo', function(){
     echo "Olá Laravel";
 });
+
+                         // Controller        // método
+Route::get('/infracoes', 'InfracoesController@listarInfracoes');
