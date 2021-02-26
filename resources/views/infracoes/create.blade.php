@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Controle de Infrações</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
+@extends('layout')
 
-    <div class="container">
-        <div class="jumbotron">
-            <h1>Infrações</h1>
+@section('cabecalho')
+    Criar infração
+@endsection
+
+@section('conteudo')
 
             <form action="/infracoes/criar" method="POST">
                 @csrf
@@ -65,8 +58,4 @@
 
             </form>
             
-        </div>
-    </div>
-
-</body>
-</html>
+@endsection
