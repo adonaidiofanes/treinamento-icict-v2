@@ -19,5 +19,5 @@ Route::get('/ola-mundo', function(){
     echo "Olá Laravel";
 });
 
-                         // Controller        // método
-Route::get('/infracoes', 'InfracoesController@listarInfracoes');
+// Página de listagem de infrações
+Route::get('/infracoes', 'InfracoesController@index');

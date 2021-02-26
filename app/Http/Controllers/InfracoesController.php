@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class InfracoesController extends Controller
 {
-    public function listarInfracoes()
+    public function index(Request $request)
     {
         // Array com uma coleção de infrações
         $infracoes = array(
@@ -26,15 +26,17 @@ class InfracoesController extends Controller
             ],
         );
 
+        return view('infracoes.index', [ 'infracoes' => $infracoes ]);
+
         // HTML para retorno no browser
-        $html = "<ul>";
+        // $html = "<ul>";
 
-        // Percorrendo todos os objetos e adicionando ao retorno de HTML
-        foreach ($infracoes as $infracao) {
-            $html .= "<li>" . $infracao['tipo'] . "</li>";
-        }
+        // // Percorrendo todos os objetos e adicionando ao retorno de HTML
+        // foreach ($infracoes as $infracao) {
+        //     $html .= "<li>" . $infracao['tipo'] . "</li>";
+        // }
 
-        $html .= "</ul>";
-        return $html;
+        // $html .= "</ul>";
+        // return $html;
     }
 }
