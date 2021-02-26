@@ -9,23 +9,8 @@ class InfracoesController extends Controller
 {
     public function index(Request $request)
     {
-        // Array com uma coleção de infrações
-        $infracoes = array(
-            [
-                'tipo' =>  'Internet',
-                'tipo_produto' =>  'Fórmulas Infantis',
-                'empresa' =>  'Nestlé',
-                'marca' =>  'Ninho',
-                'estado' =>  'RJ',
-            ],
-            [
-                'tipo' =>  'Presencial',
-                'tipo_produto' =>  'Composto Lácteo',
-                'empresa' =>  'Danone',
-                'marca' =>  'NAN',
-                'estado' =>  'SP',
-            ],
-        );
+        // Buscar todas as infrações inseridas na tabela infracoes em nosso banco de dados
+        $infracoes = Infracao::all();
 
         return view('infracoes.index', [ 'infracoes' => $infracoes ]);
 
