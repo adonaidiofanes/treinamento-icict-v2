@@ -11,19 +11,20 @@ class InfracoesController extends Controller
     {
         // Buscar todas as infrações inseridas na tabela infracoes em nosso banco de dados
         $infracoes = Infracao::all();
+        // Exemplo de ordenação
+        // $infracoes = Infracao::query()->orderBy('tipo_produto')->get();
+        // $infracoes = Infracao::query()->whereTipo('internet')->get();
+        // $infracoes = Infracao::query()->whereTipo('presencial')->get();
+        // $infracoes = Infracao::query()->whereEmpresa('danone')->get();
+        // $infracoes = Infracao::query()->whereMarca('ninho')->get();
 
-        return view('infracoes.index', [ 'infracoes' => $infracoes ]);
+        // Pegar sessão caso tiver, e transportar para minha view
+        $mensagem = $request->session()->get('mensagem');
 
-        // HTML para retorno no browser
-        // $html = "<ul>";
-
-        // // Percorrendo todos os objetos e adicionando ao retorno de HTML
-        // foreach ($infracoes as $infracao) {
-        //     $html .= "<li>" . $infracao['tipo'] . "</li>";
-        // }
-
-        // $html .= "</ul>";
-        // return $html;
+        return view('infracoes.index', [ 
+            'infracoes' => $infracoes,
+            'mensagem'  => $mensagem,
+        ]);
     }
 
     public function create()
@@ -43,6 +44,11 @@ class InfracoesController extends Controller
 
         // echo "Infração do tipo {$infracao->tipo}, registrada para a empresa {$infracao->empresa} foi criada com sucesso!";
         
+        // Informar ao usuário sobre o status da sua requsição
+        $request->session()->flash(
+            'mensagem', "Infração do tipo {$infracao->tipo}, registrada para a empresa {$infracao->empresa} foi criada com sucesso!"
+        );
+
         return redirect('/infracoes');
     }
 }

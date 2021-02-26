@@ -4,6 +4,12 @@
 
 @section('conteudo')
 
+    @if (!empty($mensagem))
+        <div class="alert alert-success">
+            {{ $mensagem }}
+        </div>
+    @endif
+
     <a href="/infracoes/criar" class="btn btn-dark mb-2">
         Adicionar
     </a>
