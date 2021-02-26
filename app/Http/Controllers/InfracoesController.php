@@ -49,6 +49,23 @@ class InfracoesController extends Controller
             'mensagem', "Infração do tipo {$infracao->tipo}, registrada para a empresa {$infracao->empresa} foi criada com sucesso!"
         );
 
+        // Diferença entre put e flash
+        // -> put (empurra na sessão - sessao fica gravada)
+        // ->flash (a sessão é gravada, mas só dura uma requisição)
+
+        return redirect('/infracoes');
+    }
+
+    public function destroy(Request $request)
+    {
+        // Pedir para o model apagar de acrdo com o ID vindo na request
+        // Infracao::destroy($request->id);
+        Infracao::where('id', $request->id)->delete();
+
+        $request->session()->flash(
+            'mensagem', "Infração com ID {$request->id} foi removida com sucesso!"
+        );
+
         return redirect('/infracoes');
     }
 }

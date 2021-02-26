@@ -22,6 +22,5 @@ Route::get('/ola-mundo', function(){
 // Página de listagem de infrações
 Route::get('/infracoes', 'InfracoesController@index');
 Route::get('/infracoes/criar', 'InfracoesController@create');
-
-// Salvar nossos dados no banco de dados
 Route::post('/infracoes/criar', 'InfracoesController@store');
+Route::delete('/infracoes/{id}', 'InfracoesController@destroy');

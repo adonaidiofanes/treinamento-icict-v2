@@ -32,14 +32,24 @@
         <tbody>
             @foreach ($infracoes as $infracao)
                 <tr>
-                    <td>{{ $infracao['id'] }}</td>
-                    <td>{{ $infracao['tipo'] }}</td>
-                    <td>{{ $infracao['tipo_produto'] }}</td>
-                    <td>{{ $infracao['empresa'] }}</td>
-                    <td>{{ $infracao['marca'] }}</td>
-                    <td>{{ $infracao['estado'] }}</td>
-                    <td>{{ $infracao['created_at'] }}</td>
-                    <td><a href="#">Apagar</a></td>
+                    <td>{{ $infracao->id }}</td>
+                    <td>{{ $infracao->tipo }}</td>
+                    <td>{{ $infracao->tipo_produto }}</td>
+                    <td>{{ $infracao->empresa }}</td>
+                    <td>{{ $infracao->marca }}</td>
+                    <td>{{ $infracao->estado }}</td>
+                    <td>{{ $infracao->created_at }}</td>
+                    <td>
+                        <form action="/infracoes/{{$infracao->id}}" method="POST" 
+                        onsubmit="return confirm('Tem certeza que deseja excluir a infração {{ addslashes($infracao->id) }}?')"
+                        >
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">
+                                Apagar
+                            </button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
