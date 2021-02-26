@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="tipo_produto">Tipo</label>
+                    <label for="tipo_produto">Tipo de Produto</label>
                     <select name="tipo_produto" id="tipo_produto" class="form-control">
                         <option value="">-- Selecione --</option>
                         <option value="formula_infantil">Fórmula Infantil</option>
