@@ -33,15 +33,16 @@ class InfracoesController extends Controller
 
     public function store(Request $request)
     {
-        // Criar objeto infracao
-        $infracao = new Infracao();
-        $infracao->tipo = $request->tipo;
-        $infracao->tipo_produto = $request->tipo_produto;
-        $infracao->empresa = $request->empresa;
-        $infracao->marca = $request->marca;
-        $infracao->estado = $request->estado;
+        $infracao = Infracao::create([
+            'tipo'          => $request->tipo,
+            'tipo_produto'  => $request->tipo_produto,
+            'empresa'       => $request->empresa,
+            'marca'         => $request->marca,
+            'estado'        => $request->estado,
+        ]);
 
-        // Salvar no banco e verificar se ocorreu certo
-        var_dump($infracao->save());
+        // echo "Infração do tipo {$infracao->tipo}, registrada para a empresa {$infracao->empresa} foi criada com sucesso!";
+        
+        return redirect('/infracoes');
     }
 }

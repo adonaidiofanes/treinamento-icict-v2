@@ -11,6 +11,9 @@ class Infracao extends Model
 
     // os campos created_at e updated_at não sejam obrigatórios
     public $timestamps = false;
+
+    // Por questões de segurança, temos que informar os fillables (atributos do nosso BD)
+    protected $fillable = ['tipo', 'tipo_produto', 'empresa', 'marca', 'estado'];
 }
 
 
