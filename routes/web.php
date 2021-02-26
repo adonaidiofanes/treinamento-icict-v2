@@ -21,3 +21,4 @@ Route::get('/ola-mundo', function(){
 
 // Página de listagem de infrações
 Route::get('/infracoes', 'InfracoesController@index');
+Route::get('/infracoes/criar', 'InfracoesController@create');

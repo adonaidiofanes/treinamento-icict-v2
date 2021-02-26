@@ -13,7 +13,7 @@
         <div class="jumbotron">
             <h1>Infrações</h1>
 
-            <a href="#" class="btn btn-dark mb-2">
+            <a href="/infracoes/criar" class="btn btn-dark mb-2">
                 Adicionar
             </a>
 
@@ -24,7 +24,7 @@
                     </li>
                 <?php endforeach; ?>
             </ul>
-            
+
         </div>
     </div>
 

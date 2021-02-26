@@ -39,4 +39,9 @@ class InfracoesController extends Controller
         // $html .= "</ul>";
         // return $html;
     }
+
+    public function create()
+    {
+        return view('infracoes.create');
+    }
 }
