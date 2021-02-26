@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Infracao;
 use Illuminate\Http\Request;
+use App\Http\Requests\InfracoesFormRequest;
 
 class InfracoesController extends Controller
 {
@@ -32,8 +33,14 @@ class InfracoesController extends Controller
         return view('infracoes.create');
     }
 
-    public function store(Request $request)
+    public function store(InfracoesFormRequest $request)
     {
+
+        // Validação: Vamos validar se o campo empresa está preenchido
+        // $request->validate([
+        //     'empresa' => 'required|min:3'
+        // ]);
+
         $infracao = Infracao::create([
             'tipo'          => $request->tipo,
             'tipo_produto'  => $request->tipo_produto,
@@ -41,8 +48,6 @@ class InfracoesController extends Controller
             'marca'         => $request->marca,
             'estado'        => $request->estado,
         ]);
-
-        // echo "Infração do tipo {$infracao->tipo}, registrada para a empresa {$infracao->empresa} foi criada com sucesso!";
         
         // Informar ao usuário sobre o status da sua requsição
         $request->session()->flash(
