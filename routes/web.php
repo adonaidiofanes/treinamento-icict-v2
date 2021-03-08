@@ -23,27 +23,27 @@ Route::get('/ola-mundo', function(){
 
 Route::get('/infracoes', 'InfracoesController@index')
     ->name('listar_infracoes')
-    ->middleware('auth');
+    ->middleware('autenticador');
 
 Route::get('/infracoes/criar', 'InfracoesController@create')
     ->name('form_criar_infracao')
-    ->middleware('auth');
+    ->middleware('autenticador');
 
-Route::post('/infracoes/criar', 'InfracoesController@store')->middleware('auth');
+Route::post('/infracoes/criar', 'InfracoesController@store')->middleware('autenticador');
 
-Route::delete('/infracoes/{id}', 'InfracoesController@destroy')->middleware('auth');
+Route::delete('/infracoes/{id}', 'InfracoesController@destroy')->middleware('autenticador');
 
 Route::put('/infracoes/atualizar/{id}', 'InfracoesController@update')
     ->name('atualizar_infracao')
-    ->middleware('auth');
+    ->middleware('autenticador');
 
 Route::get('/infracoes/atualizar/{id}', 'InfracoesController@edit')
     ->name('form_editar_infracao')
-    ->middleware('auth');
+    ->middleware('autenticador');
 
 Route::get('/infracoes/exibir/{id}', 'InfracoesController@show')
     ->name('exibir_infracao')
-    ->middleware('auth');
+    ->middleware('autenticador');
 
 Route::get('/vacinas/listar', 'VacinasController@index')->name('listar_vacinas');
 Auth::routes();
