@@ -14,4 +14,10 @@ class Vacina extends Model
     {
         return $this->belongsTo(Instituicao::class);
     }
+
+    public function usuarios()
+    {
+        return $this->belongsToMany(User::class, 'user_vacinas', 'id_vacina', 'id_user');
+    }
+
 }

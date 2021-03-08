@@ -42,5 +42,15 @@ class User extends Authenticatable
     {
         return $this->hasOne(Endereco::class, 'id_user');
     }
+
+    // 4 argumentos:
+        // 1. A Model que queremos alcançar (Vacina::class)
+        // 2. O nome da tabela pivot (user_vacinas)
+        // 3. O campo que referencia a Model que estamos (no nosso caso é a User)
+        // 4. O campo que referencia a Model que queremos alcançar (id_vacina)
+    public function vacinas()
+    {
+        return $this->belongsToMany(Vacina::class, 'user_vacinas', 'id_user', 'id_vacina');
+    }
     
 }
