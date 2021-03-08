@@ -15,6 +15,8 @@ class Infracao extends Model
     // Por questões de segurança, temos que informar os fillables (atributos do nosso BD)
     protected $fillable = ['tipo', 'tipo_produto', 'empresa', 'marca', 'estado'];
 
+    // geters and setters
+
     public function formataTipoProduto()
     {
         $tipo = $this->tipo_produto; // resgata o tipo de produto do meu objeto instanciado
