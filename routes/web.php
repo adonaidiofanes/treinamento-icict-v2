@@ -22,17 +22,35 @@ Route::get('/ola-mundo', function(){
 });
 
 Route::get('/infracoes', 'InfracoesController@index')
-    ->name('listar_infracoes');
+    ->name('listar_infracoes')
+    ->middleware('auth');
 
-Route::get('/infracoes/criar', 'InfracoesController@create')->name('form_criar_infracao');
-Route::post('/infracoes/criar', 'InfracoesController@store');
-Route::delete('/infracoes/{id}', 'InfracoesController@destroy');
-Route::put('/infracoes/atualizar/{id}', 'InfracoesController@update')->name('atualizar_infracao');
-Route::get('/infracoes/atualizar/{id}', 'InfracoesController@edit')->name('form_editar_infracao');
-Route::get('/infracoes/exibir/{id}', 'InfracoesController@show')->name('exibir_infracao');
+Route::get('/infracoes/criar', 'InfracoesController@create')
+    ->name('form_criar_infracao')
+    ->middleware('auth');
+
+Route::post('/infracoes/criar', 'InfracoesController@store')->middleware('auth');
+
+Route::delete('/infracoes/{id}', 'InfracoesController@destroy')->middleware('auth');
+
+Route::put('/infracoes/atualizar/{id}', 'InfracoesController@update')
+    ->name('atualizar_infracao')
+    ->middleware('auth');
+
+Route::get('/infracoes/atualizar/{id}', 'InfracoesController@edit')
+    ->name('form_editar_infracao')
+    ->middleware('auth');
+
+Route::get('/infracoes/exibir/{id}', 'InfracoesController@show')
+    ->name('exibir_infracao')
+    ->middleware('auth');
+
 Route::get('/vacinas/listar', 'VacinasController@index')->name('listar_vacinas');
 Auth::routes();
+
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Rotas para registro de usuário e login
 Route::get('/entrar', 'AcessoController@index');
 Route::post('/entrar', 'AcessoController@entrar');
 Route::get('/registrar', 'RegistroController@create');

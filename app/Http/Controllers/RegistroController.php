@@ -16,6 +16,12 @@ class RegistroController extends Controller
 
     public function store(Request $request)
     {
+
+        // Validação do campo CPF
+        $request->validate([
+            'cpf' => 'required|min:3|numeric'
+        ]);
+
         $dados = $request->except('_token');
 
         // Criptografia de senha via Hash
