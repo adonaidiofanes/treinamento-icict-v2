@@ -25,5 +25,7 @@ Route::post('/infracoes/criar', 'InfracoesController@store');
 Route::delete('/infracoes/{id}', 'InfracoesController@destroy');
 Route::put('/infracoes/atualizar/{id}', 'InfracoesController@update')->name('atualizar_infracao');
 Route::get('/infracoes/atualizar/{id}', 'InfracoesController@edit')->name('form_editar_infracao');
-
 Route::get('/infracoes/exibir/{id}', 'InfracoesController@show')->name('exibir_infracao');
+
+// Rota de vacinas
+Route::get('/vacinas/listar', 'VacinasController@index')->name('listar_vacinas');
