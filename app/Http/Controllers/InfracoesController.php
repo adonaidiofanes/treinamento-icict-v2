@@ -69,4 +69,31 @@ class InfracoesController extends Controller
 
         return redirect()->route('listar_infracoes');
     }
+
+    public function update(Request $request, $id)
+    {
+        $infracao = Infracao::findOrFail($id);
+
+        // validação
+        $this->validate($request, [
+            'tipo' => 'required',
+            'marca' => 'required|min:3',
+            'empresa' => 'required|min:3',
+        ]);
+
+        $infracao->update($request->all());
+
+        // Imprimir em uma sessão flash
+        $request->session()->flash(
+            'mensagem', 
+            "Infração de id {$request->id} foi atualizada com sucesso!"
+        );
+        return redirect()->route('listar_infracoes');
+    }
+
+    public function edit($id)
+    {
+        $infracao = Infracao::findOrFail($id);
+        return view('infracoes.edit', [ 'infracao' => $infracao ]);
+    }
 }
