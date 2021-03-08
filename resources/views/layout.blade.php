@@ -11,6 +11,28 @@
 <body>
 
     <div class="container">
+
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <a href="/infracoes" class="navbar-brand">Infrações</a>
+    
+            @auth
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/sair">Sair</a>
+                    </li>
+                </ul>
+            @endauth
+
+            @guest
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a href="/entrar">Entrar</a>
+                    </li>
+                </ul>
+            @endguest
+
+        </nav>
+
         <div class="jumbotron">
             <h1>
                 @yield('cabecalho')

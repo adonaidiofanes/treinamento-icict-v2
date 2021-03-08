@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +35,10 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/entrar', 'AcessoController@index');
 Route::post('/entrar', 'AcessoController@entrar');
-
 Route::get('/registrar', 'RegistroController@create');
 Route::post('/registrar', 'RegistroController@store');
+
+Route::get('/sair', function(){
+    Auth::logout();
+    return redirect('/entrar');
+});
