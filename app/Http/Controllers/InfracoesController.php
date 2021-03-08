@@ -96,4 +96,10 @@ class InfracoesController extends Controller
         $infracao = Infracao::findOrFail($id);
         return view('infracoes.edit', [ 'infracao' => $infracao ]);
     }
+
+    public function show($id)
+    {
+        $infracao = Infracao::findOrFail($id);
+        return view('infracoes.show', compact('infracao'));
+    }
 }

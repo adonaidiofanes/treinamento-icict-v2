@@ -14,6 +14,30 @@ class Infracao extends Model
 
     // Por questões de segurança, temos que informar os fillables (atributos do nosso BD)
     protected $fillable = ['tipo', 'tipo_produto', 'empresa', 'marca', 'estado'];
+
+    public function formataTipoProduto()
+    {
+        $tipo = $this->tipo_produto; // resgata o tipo de produto do meu objeto instanciado
+
+        switch ($tipo) {
+            case 'formula_infantil':
+                return "Fórmula Infantil";
+                break;
+
+            case 'leites':
+                return "Leites";
+                break;
+
+            case 'composto_lacteo':
+                return "Composto Lácteo";
+                break;
+            
+            default:
+                return $tipo;
+                break;
+        }
+    }
+
 }
 
 

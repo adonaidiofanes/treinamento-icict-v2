@@ -42,6 +42,11 @@
                     <td>
                         <div class="d-flex justify-content-center">
 
+                            <a href="{{ route('exibir_infracao', $infracao->id) }}" 
+                            class="btn btn-success btn-sm mr-1" title="Exibir infração #{{$infracao->id}}">
+                                <i class="fas fa-eye"></i>
+                            </a>
+
                             <a href="{{ route('form_editar_infracao', $infracao->id) }}" 
                             class="btn btn-primary btn-sm mr-1">
                                 <i class="fas fa-pencil-alt"></i>

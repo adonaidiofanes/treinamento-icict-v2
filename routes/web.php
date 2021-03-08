@@ -23,6 +23,7 @@ Route::get('/infracoes', 'InfracoesController@index')->name('listar_infracoes');
 Route::get('/infracoes/criar', 'InfracoesController@create')->name('form_criar_infracao');
 Route::post('/infracoes/criar', 'InfracoesController@store');
 Route::delete('/infracoes/{id}', 'InfracoesController@destroy');
-
 Route::put('/infracoes/atualizar/{id}', 'InfracoesController@update')->name('atualizar_infracao');
 Route::get('/infracoes/atualizar/{id}', 'InfracoesController@edit')->name('form_editar_infracao');
+
+Route::get('/infracoes/exibir/{id}', 'InfracoesController@show')->name('exibir_infracao');
