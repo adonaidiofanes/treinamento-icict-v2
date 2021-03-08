@@ -34,7 +34,7 @@
                 <tr>
                     <td>{{ $infracao->id }}</td>
                     <td>{{ $infracao->tipo }}</td>
-                    <td>{{ $infracao->tipo_produto }}</td>
+                    <td>{{ $infracao->formataTipoProduto() }}</td>
                     <td>{{ $infracao->empresa }}</td>
                     <td>{{ $infracao->marca }}</td>
                     <td>{{ $infracao->estado }}</td>

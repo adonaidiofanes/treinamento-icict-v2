@@ -31,6 +31,8 @@ Route::get('/infracoes/exibir/{id}', 'InfracoesController@show')->name('exibir_i
 Route::get('/vacinas/listar', 'VacinasController@index')->name('listar_vacinas');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/entrar', 'AcessoController@index');
 Route::post('/entrar', 'AcessoController@entrar');
+
+Route::get('/registrar', 'RegistroController@create');
+Route::post('/registrar', 'RegistroController@store');
