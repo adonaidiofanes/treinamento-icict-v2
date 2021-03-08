@@ -19,7 +19,9 @@ Route::get('/ola-mundo', function(){
     echo "Olá Laravel";
 });
 
-Route::get('/infracoes', 'InfracoesController@index')->name('listar_infracoes');
+Route::get('/infracoes', 'InfracoesController@index')
+    ->name('listar_infracoes');
+
 Route::get('/infracoes/criar', 'InfracoesController@create')->name('form_criar_infracao');
 Route::post('/infracoes/criar', 'InfracoesController@store');
 Route::delete('/infracoes/{id}', 'InfracoesController@destroy');
@@ -29,3 +31,6 @@ Route::get('/infracoes/exibir/{id}', 'InfracoesController@show')->name('exibir_i
 
 // Rota de vacinas
 Route::get('/vacinas/listar', 'VacinasController@index')->name('listar_vacinas');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');

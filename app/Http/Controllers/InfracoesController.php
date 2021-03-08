@@ -4,12 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Infracao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\InfracoesFormRequest;
 
 class InfracoesController extends Controller
 {
+
+    // Método construtor para verificação de usuário logado
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     public function index(Request $request)
     {
+
+        // Método 1
+        // if (!Auth::check()) {
+        //     echo "Usuário não autenticado";
+        //     exit();
+        // }
+
         // Buscar todas as infrações inseridas na tabela infracoes em nosso banco de dados
         $infracoes = Infracao::all();
         // Exemplo de ordenação
