@@ -23,6 +23,14 @@
     
             @auth
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item" style="color: #BEBEBE">
+                        {{ auth()->user()->name }}
+                        |
+                        {{ auth()->user()->papel->nome }}
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a href="/sair">Sair</a>
                     </li>

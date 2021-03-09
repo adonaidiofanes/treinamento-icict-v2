@@ -27,7 +27,7 @@ Route::middleware('autenticador')->group(function(){
         
         Route::get('/', 'InfracoesController@index')
             ->name('listar_infracoes')
-            ->middleware('can:editar_infracao');
+            ->middleware('can:ler_infracao');
 
         Route::get('/criar', 'InfracoesController@create')->name('form_criar_infracao');
         Route::post('/criar', 'InfracoesController@store');
