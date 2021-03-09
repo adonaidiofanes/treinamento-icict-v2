@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Permissao;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -56,6 +57,13 @@ class User extends Authenticatable
     public function papel()
     {
         return $this->belongsTo(Papel::class);
+    }
+
+    public function checarPapel(Permissao $permissao)
+    {
+        // Método contains: passa um par de chave/valor para verificar
+        // se o papel buscado existe na collection
+        return $permissao->papeis->contains($this->papel);
     }
     
 }

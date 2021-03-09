@@ -21,29 +21,23 @@ Route::get('/ola-mundo', function(){
     echo "Olá Laravel";
 });
 
-Route::get('/infracoes', 'InfracoesController@index')
-    ->name('listar_infracoes')
-    ->middleware('autenticador');
+Route::middleware('autenticador')->group(function(){
+    // definir prefixo de url
+    Route::prefix('infracoes')->group(function(){ // <- grupo: pertence a url /infracoes
+        
+        Route::get('/', 'InfracoesController@index')
+            ->name('listar_infracoes')
+            ->middleware('can:editar_infracao');
 
-Route::get('/infracoes/criar', 'InfracoesController@create')
-    ->name('form_criar_infracao')
-    ->middleware('autenticador');
+        Route::get('/criar', 'InfracoesController@create')->name('form_criar_infracao');
+        Route::post('/criar', 'InfracoesController@store');
+        Route::delete('/{id}', 'InfracoesController@destroy');
+        Route::put('/atualizar/{id}', 'InfracoesController@update')->name('atualizar_infracao');
+        Route::get('/atualizar/{id}', 'InfracoesController@edit')->name('form_editar_infracao');
+        Route::get('/infracoes/exibir/{id}', 'InfracoesController@show')->name('exibir_infracao');
+    });
+});
 
-Route::post('/infracoes/criar', 'InfracoesController@store')->middleware('autenticador');
-
-Route::delete('/infracoes/{id}', 'InfracoesController@destroy')->middleware('autenticador');
-
-Route::put('/infracoes/atualizar/{id}', 'InfracoesController@update')
-    ->name('atualizar_infracao')
-    ->middleware('autenticador');
-
-Route::get('/infracoes/atualizar/{id}', 'InfracoesController@edit')
-    ->name('form_editar_infracao')
-    ->middleware('autenticador');
-
-Route::get('/infracoes/exibir/{id}', 'InfracoesController@show')
-    ->name('exibir_infracao')
-    ->middleware('autenticador');
 
 Route::get('/vacinas/listar', 'VacinasController@index')->name('listar_vacinas');
 Auth::routes();
