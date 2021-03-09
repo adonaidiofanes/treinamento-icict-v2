@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'cpf',
+        'name', 'email', 'password', 'cpf', 'papel_id'
     ];
 
     /**
@@ -51,6 +51,11 @@ class User extends Authenticatable
     public function vacinas()
     {
         return $this->belongsToMany(Vacina::class, 'user_vacinas', 'id_user', 'id_vacina');
+    }
+
+    public function papel()
+    {
+        return $this->belongsTo(Papel::class);
     }
     
 }
