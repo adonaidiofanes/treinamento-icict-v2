@@ -89,6 +89,9 @@ class InfracoesController extends Controller
     {
         $infracao = Infracao::findOrFail($id);
 
+        // Informar ao meu controller, que eu quero um controle de acesso
+        $this->authorize('editar_infracao', $infracao);
+
         // validação
         $this->validate($request, [
             'tipo' => 'required',
@@ -109,6 +112,10 @@ class InfracoesController extends Controller
     public function edit($id)
     {
         $infracao = Infracao::findOrFail($id);
+
+        // Informar ao meu controller, que eu quero um controle de acesso
+        $this->authorize('editar_infracao', $infracao);
+
         return view('infracoes.edit', [ 'infracao' => $infracao ]);
     }
 
